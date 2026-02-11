@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    
     @State private var appChoices = ["Rock", "Paper", "Scissors"]
     @State private var appsChoice = Int.random(in: 0...2)
     let playerChoices = ["Rock", "Paper", "Scissors"]
@@ -17,13 +16,13 @@ struct ContentView: View {
     @State private var showingScore = false
     var body: some View {
         VStack {
-          Text("Let´s play Rock, Paper, Scissors!")
+            Text("Let´s play Rock, Paper, Scissors!")
                 .font(.largeTitle)
                 .fontWeight(.bold)
             Text("Your score is \(score)")
                 .font(.title2)
                 .padding()
-          
+
             VStack {
                 ForEach(0 ..< 3) { number in
                     Button {
@@ -38,15 +37,16 @@ struct ContentView: View {
                 Text("Your score is \(score) the app chose\(appChoices[appsChoice])")
                 Text("")
             }
-
         }
         .padding()
     }
+
     func shuffledChoices() {
         appChoices.shuffle()
         appsChoice = Int.random(in: 0...2)
         showingScore = false
     }
+
     func buttonTapped(_ number: Int) {
         if number == appsChoice {
             showingAlert = "It´s a draw!"
@@ -61,6 +61,7 @@ struct ContentView: View {
             showingScore = true
         }
     }
+
     func ButtonImage(_ number: Int) -> some View {
         Text(playerChoices[number])
             .font(.title)
